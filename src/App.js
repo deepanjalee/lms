@@ -1,21 +1,28 @@
+import { Header, Main,Footer} from "./components/Layouts"
+import {NavBar,NavItem,NavLink} from "./components/NavBar"
 
-import styled from "styled-components";
-
-const Title = styled.h1`
-font-size: 1.5em;
-  text-align: center;
-  color: palevioletred;`;
-
-  const Wrapper = styled.section`
-  padding: 4em;
-  background: papayawhip;
-`;
 
 function App() {
   return (
-    <Wrapper>
-    <Title>Test Hear</Title>
-    </Wrapper>
+    <>
+    <Header>
+<NavBar>
+  <NavItem>
+    <NavLink href="#">
+      Home 
+    </NavLink>
+  </NavItem>
+  <NavItem>
+    <NavLink>
+      About 
+    </NavLink>
+  </NavItem>
+</NavBar>
+    </Header>
+    <Main>This is Main Section</Main>
+    <Footer>Footer Section</Footer>
+    </>
+  
   );
 }
 
