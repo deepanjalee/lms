@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import { GiBookshelf } from "react-icons/gi";
 
 import { Header, Main,Footer} from "./components/Layouts"
 import {NavBar,NavItem,NavLink} from "./components/NavBar"
@@ -30,6 +31,11 @@ function App() {
     <ThemeProvider theme={theme}>
     <Header>
 <NavBar>
+  <NavItem>
+    <NavLink href="#">
+    <GiBookshelf/>
+    </NavLink>
+  </NavItem>
   <NavItem>
     <NavLink href="#">
       Catelog 
