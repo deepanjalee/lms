@@ -3,6 +3,8 @@ import { GiBookshelf } from "react-icons/gi";
 
 import { Header, Main,Footer} from "./components/Layouts"
 import {NavBar,NavItem,NavLink} from "./components/NavBar"
+import Dashboard from "./containers/Dashboard";
+
 
 
 function App() {
@@ -48,7 +50,14 @@ function App() {
   </NavItem>
 </NavBar>
     </Header>
-    <Main>This is Main Section</Main>
+    <Main>
+<Dashboard>
+
+</Dashboard>
+
+
+
+    </Main>
     <Footer>Footer Section</Footer>
     </ThemeProvider>
   
