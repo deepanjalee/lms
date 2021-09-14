@@ -16,6 +16,9 @@ import Spinner from "./components/Spinner";
 const Dashboard = React.lazy(()=> {
 return import('./containers/Dashboard');
 });
+const NotFound = React.lazy(()=> {
+return import('./containers/404');
+});
 
 
 function App() {
@@ -25,6 +28,7 @@ function App() {
   <Switch>
           <Route path={DASHBOARD} component={Dashboard} />
           <Route path={CATELOG} component={Spinner} />         
+          <Route component={NotFound} />         
         </Switch>;
         </Suspense>
   const theme = {
