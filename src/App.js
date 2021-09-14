@@ -5,8 +5,7 @@ import React, {Suspense} from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { Header, Main, Footer } from "./components/Layouts"
 import { NavBar, NavItem, NavLink } from "./components/NavBar"
@@ -55,17 +54,17 @@ function App() {
       <Header>
         <NavBar>
           <NavItem>
-            <NavLink href="#">
+            <NavLink href={DASHBOARD}>
               <GiBookshelf />
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">
+            <NavLink href={CATELOG}>
               Catelog
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink>
+            <NavLink href={DASHBOARD}>
               Dashboard
             </NavLink>
           </NavItem>
