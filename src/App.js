@@ -1,14 +1,33 @@
 import { ThemeProvider } from "styled-components";
 import { GiBookshelf } from "react-icons/gi";
+import React, {Suspense} from "react";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { Header, Main, Footer } from "./components/Layouts"
 import { NavBar, NavItem, NavLink } from "./components/NavBar"
-import Dashboard from "./containers/Dashboard";
 
+import {DASHBOARD,CATELOG} from "./shared/router"
+import Spinner from "./components/Spinner";
+
+const Dashboard = React.lazy(()=> {
+return import('./containers/Dashboard');
+});
 
 
 function App() {
 
+  let routes = 
+  <Suspense fallback={<Spinner />}>
+  <Switch>
+          <Route path={DASHBOARD} component={Dashboard} />
+          <Route path={CATELOG} component={Spinner} />         
+        </Switch>;
+        </Suspense>
   const theme = {
     primary: {
       main: "#00bbff",
@@ -53,9 +72,9 @@ function App() {
         </NavBar>
       </Header>
       <Main>
-        <Dashboard>
-
-        </Dashboard>
+        <Router>
+          {routes}
+        </Router>
 
 
 

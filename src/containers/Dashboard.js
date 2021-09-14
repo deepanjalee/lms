@@ -1,4 +1,5 @@
 import React from "react"
+import Spinner from "../components/Spinner";
  
 import Tabs from "../components/Tabs";
 
@@ -15,7 +16,6 @@ const Dashboard = () => {
     
     return(
         <Tabs contents = { contents } />
-
     )
        
     
