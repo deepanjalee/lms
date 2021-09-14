@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
+
 export const TabsContainer = styled.div`
  overflow: hidden;
  background: #ffff;
  height: 100%;
+ width:98%;
 `;
 const TabButtonContainer = styled.div`
  margin-top: 1em;
@@ -38,6 +41,7 @@ export const TabContent = styled.div`
  border-top-right-radius: 1em;
  border-bottom-right-radius: 1em;
  height: 80vh;
+
 `;
 export const Content = styled.div`
  ${(props) => (props.active ? "" : "display:none")};
