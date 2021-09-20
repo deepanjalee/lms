@@ -18,5 +18,7 @@ export const Footer = styled.footer`
 height : 5vh;
 display:flex;
 justify-content: center;
+background-color: ${props => props.theme.primary.main};
+align-items: center;
 
 `;

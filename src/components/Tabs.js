@@ -26,7 +26,7 @@ export const Tab = styled.button`
  height: 3em;
  border: ${(props) => (props.active ? "" : "1px solid #ccc")};
  background-color: ${(props) =>
- props.active ? props.theme.primary.main : "#fff"};
+        props.active ? props.theme.primary.main : "#fff"};
  color: ${(props) => props.theme.primary.textColor};
  border-top-left-radius: 1em;
  border-top-right-radius: 1em;
@@ -47,31 +47,31 @@ export const Content = styled.div`
  ${(props) => (props.active ? "" : "display:none")};
 `;
 export default function Tabs(props) {
- const { contents } = props;
- const [active, setActive] = useState(0);
- const activeTab = (event) => {
- const index = parseInt(event.target.id, 0);
- if (index !== active) {
- // console.log(index);
- setActive(index);
- }
- };
- return (
- <TabsContainer>
- <TabButtonContainer>
- {contents.map((content, index) => (
- <Tab onClick={activeTab} active={active === index} id={index}>
- {content.title}
- </Tab>
- ))}
- </TabButtonContainer>
- <TabContent>
- {contents.map((content, index) => (
- <Content active={active === index} id={index}>
- {content.elements}
- </Content>
- ))}
- </TabContent>
- </TabsContainer>
- );
+    const { contents } = props;
+    const [active, setActive] = useState(0);
+    const activeTab = (event) => {
+        const index = parseInt(event.target.id, 0);
+        if (index !== active) {
+            // console.log(index);
+            setActive(index);
+        }
+    };
+    return (
+        <TabsContainer>
+            <TabButtonContainer>
+                {contents.map((content, index) => (
+                    <Tab onClick={activeTab} active={active === index} id={index} key={index}>
+                        {content.title}
+                    </Tab>
+                ))}
+            </TabButtonContainer>
+            <TabContent>
+                {contents.map((content, index) => (
+                    <Content active={active === index} id={index} key={index}>
+                        {content.elements}
+                    </Content>
+                ))}
+            </TabContent>
+        </TabsContainer>
+    );
 }

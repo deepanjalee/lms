@@ -1,6 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { GiBookshelf } from "react-icons/gi";
-import React, {Suspense} from "react";
+import React, { Suspense } from "react";
 
 import {
   BrowserRouter as Router,
@@ -10,27 +10,28 @@ import {
 import { Header, Main, Footer } from "./components/Layouts"
 import { NavBar, NavItem, NavLink } from "./components/NavBar"
 
-import {DASHBOARD,CATELOG} from "./shared/router"
+import { DASHBOARD, CATELOG } from "./shared/router"
 import Spinner from "./components/Spinner";
 
-const Dashboard = React.lazy(()=> {
-return import('./containers/Dashboard');
+const Dashboard = React.lazy(() => {
+  return import('./containers/Dashboard');
 });
-const NotFound = React.lazy(()=> {
-return import('./containers/404');
+const NotFound = React.lazy(() => {
+  return import('./containers/404');
 });
 
 
 function App() {
 
-  let routes = 
-  <Suspense fallback={<Spinner />}>
-  <Switch>
-          <Route path={DASHBOARD} component={Dashboard} />
-          <Route path={CATELOG} component={Spinner} />         
-          <Route component={NotFound} />         
-        </Switch>;
-        </Suspense>
+  let routes =
+    <Suspense fallback={<Spinner />}>
+      <Switch>
+        <Route path={DASHBOARD} component={Dashboard} />
+        <Route path={CATELOG} component={Spinner} />
+        <Route path="/" component={Dashboard} />
+        <Route component={NotFound} />
+      </Switch>;
+    </Suspense>
   const theme = {
     primary: {
       main: "#00bbff",
@@ -50,7 +51,7 @@ function App() {
 
     },
 
-    spacing: (factor) => `${factor*8}px`,
+    spacing: (factor) => `${factor * 8}px`,
 
   }
   return (
@@ -82,7 +83,7 @@ function App() {
 
 
       </Main>
-      <Footer>Footer Section</Footer>
+      <Footer>Copyright { new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
     </ThemeProvider>
 
   );

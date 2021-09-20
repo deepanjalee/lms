@@ -24,9 +24,9 @@ align-items:flex-start;
 justify-content: center;
 `;
 
-const Spinner= () => (
+const Spinner = () => (
     <SpinnerContainer >
-        <SpinnerDiv />     
+        <SpinnerDiv />
     </SpinnerContainer>
 );
 
