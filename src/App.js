@@ -14,7 +14,7 @@ import { DASHBOARD, CATELOG } from "./shared/router"
 import Spinner from "./components/Spinner";
 
 const Dashboard = React.lazy(() => {
-  return import('./containers/Dashboard');
+  return import('./containers/Dashboard/index');
 });
 const NotFound = React.lazy(() => {
   return import('./containers/404');
@@ -26,10 +26,12 @@ function App() {
   let routes =
     <Suspense fallback={<Spinner />}>
       <Switch>
-        <Route path={DASHBOARD} component={Dashboard} />
-        <Route path={CATELOG} component={Spinner} />
-        <Route path="/" component={Dashboard} />
+        <Route exact path={DASHBOARD} component={Dashboard} />
+        <Route exact path={CATELOG} component={Spinner} />
+        <Route exact path="/" component={Dashboard} />
         <Route component={NotFound} />
+      
+       
       </Switch>;
     </Suspense>
   const theme = {

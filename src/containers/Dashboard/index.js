@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
-import Spinner from "../components/Spinner";
+import Spinner from "../../components/Spinner";
 
-import Tabs from "../components/Tabs";
+import Tabs from "../../components/Tabs";
 
-import { getBooks } from "../api/bookAPI";
+import { getBooks } from "../../api/bookAPI";
 
 
 
