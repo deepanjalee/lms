@@ -1,19 +1,28 @@
 import styled from "styled-components";
 
+import {capitalizeFirst} from "../shared/utils"
+
 
 const StyledTable = styled.table`
+margin-top: 2em;
+border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
 border: none;
-border-collapse: separate;
+
 th,td{
     border: none;
+    padding: 1em 3.5em;
+ 
+
 }
 
 td{
-    padding: 5px 10px;
+    padding: 10px 10px;
 }
 
 tbody tr{
-    :nth-child(odd) {
+    :nth-child(even) {
         background-color: ${props => props.theme.primary.links};
     }
 
@@ -38,7 +47,7 @@ const TableMarkUp = ({ titles, data }) => (
         <thead>
             <tr>
                 {titles.map((title, index) => (
-                    <th key={index}>{title}</th>
+                    <th key={index}>{capitalizeFirst(title)}</th>
                 ))}
             </tr>
         </thead>

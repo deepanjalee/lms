@@ -14,7 +14,16 @@ const Books = ({ catelog }) => {
         id: "3",
         isAvailable: true,
         title: "Harry",
-    }]
+    },
+    {
+        author: "Rowling",
+        burrowedDate: "",
+        burrowedMemberId: "",
+        id: "3",
+        isAvailable: true,
+        title: "Harry",
+    }
+]
     return (
         <FluidContainer>
             <Table data={upadteCategory} />
