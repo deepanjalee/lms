@@ -20,13 +20,17 @@ const Books = ({ catelog }) => {
         burrowedDate: "",
         burrowedMemberId: "",
         id: "3",
-        isAvailable: true,
+        isAvailable: false,
         title: "Harry",
     }
-]
+    ]
+
+    const handleTableRowClick = (id) => {
+        console.log(id);
+    }
     return (
         <FluidContainer>
-            <Table data={upadteCategory} />
+            <Table data={upadteCategory} handleRowClick={handleTableRowClick} instruction="Please click the book row for display the more details" />
 
         </FluidContainer>
     );

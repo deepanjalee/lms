@@ -10,9 +10,6 @@ display:flex;
 flex-direction: column;
 align-items: center;
 
-
-
-
 `;
 export const Footer = styled.footer`
 height : 5vh;

@@ -40,7 +40,8 @@ function App() {
       links: "#21f1fc",
       move: "#29c2ff",
       textColor: "#00324d",
-      activeText: "#0373ad"
+      activeText: "#0373ad",
+      ash: "#787878",
 
     },
 
