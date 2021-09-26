@@ -37,7 +37,7 @@ const Dashboard = () => {
     ];
 
     return (
-        isLoading ? <Spinner /> : <Tabs contents={contents} />
+        isLoading ? <Spinner /> :books.length > 0 && <Tabs contents={contents} /> 
     )
 
 
