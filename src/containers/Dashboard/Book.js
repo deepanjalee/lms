@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 import { FaAngleLeft } from "react-icons/fa";
 import { getBook } from "../../api/bookAPI";
 import { Button, Container, ContainerInline, FlexRow, Available } from "../../components/CommonComponent";
 import Spinner from "../../components/Spinner";
+
+import SingleBookImage from "../../shared/book-img.png"
+
+const ContainerInlineAlignLeft = styled(ContainerInline)`
+align-items:flex-start;
+`;
+
 
 const Book = ({ id, handleBackClick }) => {
 
@@ -38,8 +46,10 @@ const Book = ({ id, handleBackClick }) => {
             </Button>
             {
                 !isLoading && book !== null ?
-                    (<FlexRow>
-                        <ContainerInline>
+                    (
+                        <>
+                    <FlexRow>
+                        <ContainerInlineAlignLeft>
                             <h1>{book.title}</h1>
                             <h1>{book.author}</h1>
                             <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -57,8 +67,32 @@ const Book = ({ id, handleBackClick }) => {
                                 </> )
                                 }
 
+                        </ContainerInlineAlignLeft>
+                        <ContainerInline>
+                            <img src={SingleBookImage} alt="Book Cover" style={{ border: "1px solid black" }} />
                         </ContainerInline>
-                    </FlexRow>) :
+                    </FlexRow>
+
+                    <FlexRow>
+                        {book.isAvailable ? 
+                        (
+                            <>
+                            <Button onClick= {()=> console.log("Call me API")}>Lend</Button>
+                            <Button danger onClick= {()=> console.log("Call Delete me API")}>Delete</Button>
+                           
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                             <Button onClick= {()=> console.log("Call Return me API")}>Return</Button>
+                            </>
+                        )
+                        }
+                    </FlexRow>
+                    </>
+                    ) 
+                     :
                     (<Spinner />)
 
             }

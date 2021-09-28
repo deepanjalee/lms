@@ -32,7 +32,7 @@ function App() {
         <Route component={NotFound} />
       
        
-      </Switch>;
+      </Switch>
     </Suspense>
   const theme = {
     primary: {
@@ -43,6 +43,12 @@ function App() {
       activeText: "#0373ad",
       ash: "#787878",
 
+    },
+
+    danger:{
+      main: "#ff174d",
+      dark:"#d10232",
+      white:"#ffffff",
     },
 
     secondary: {
