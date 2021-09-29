@@ -6,7 +6,8 @@ export const TabsContainer = styled.div`
  overflow: hidden;
  background: #ffff;
  height: 100%;
- width:98%;
+ max-width:98%;
+ min-width:98%;
 `;
 const TabButtonContainer = styled.div`
  margin-top: 1em;
