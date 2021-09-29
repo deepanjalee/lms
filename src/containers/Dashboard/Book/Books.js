@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
-import Table from "../../components/Table"
-import { FluidContainer } from "../../components/CommonComponent";
+import Table from "../../../components/Table"
+import { FluidContainer } from "../../../components/CommonComponent";
 import Book from "./Book";
 
 

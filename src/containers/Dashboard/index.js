@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import Spinner from "../../components/Spinner";
 
 import Tabs from "../../components/Tabs";
-import Books from "./Books";
+import Books from "./Book/Books";
 
 import { getBooks } from "../../api/bookAPI";
 

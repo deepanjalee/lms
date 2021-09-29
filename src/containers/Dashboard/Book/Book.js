@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { FaAngleLeft } from "react-icons/fa";
-import { getBook } from "../../api/bookAPI";
-import { Button, Container, ContainerInline, FlexRow, Available } from "../../components/CommonComponent";
-import Spinner from "../../components/Spinner";
+import { getBook } from "../../../api/bookAPI";
+import { Button, Container, ContainerInline, FlexRow, Available } from "../../../components/CommonComponent";
+import Spinner from "../../../components/Spinner";
 
-import SingleBookImage from "../../shared/book-img.png"
+import SingleBookImage from "../../../shared/book-img.png"
 
 const ContainerInlineAlignLeft = styled(ContainerInline)`
 align-items:flex-start;
