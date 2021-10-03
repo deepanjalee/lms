@@ -89,8 +89,6 @@ function App() {
           {routes}
         </Router>
 
-
-
       </Main>
       <Footer>Copyright { new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
     </ThemeProvider>

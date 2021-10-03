@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 
 import Tabs from "../../components/Tabs";
-import Books from "./Book/Books";
+import Books from "./Book/index";
 
 import { getBooks } from "../../api/bookAPI";
 
@@ -37,10 +37,8 @@ const Dashboard = () => {
     ];
 
     return (
-        isLoading ? <Spinner /> :books.length > 0 && <Tabs contents={contents} /> 
+        isLoading ? <Spinner /> : <Tabs contents={contents} /> 
     )
-
-
 }
 
 export default Dashboard

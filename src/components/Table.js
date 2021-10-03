@@ -83,9 +83,11 @@ const TableMarkUp = ({ titles, data, handleClick, caption }) => (
     </StyledTable>
 );
 
+
+
 const Table = ({ data, handleRowClick, instruction }) =>
 
-    data ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick} caption={instruction} /> : <NoData>
+    data.length > 0 ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick} caption={instruction} /> : <NoData>
         No Data Available
     </NoData>
 
