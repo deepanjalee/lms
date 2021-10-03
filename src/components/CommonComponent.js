@@ -34,7 +34,16 @@ export const FlexRow = styled.div`
 
 
 export const Button = styled.button`
-  background-color: ${(props) => props.danger ?  props.theme.danger.main :  props.theme.primary.main};
+  background-color: ${(props) => {
+    switch (props.color){
+      case "danger":
+      return props.theme.danger.main ;
+      case "primary":
+      return props.theme.primary.main;
+      default:
+      return props.theme.primary.links;
+    }
+  }};
   border:none;
   border-radius: 50px;
   padding: 5px 30px;

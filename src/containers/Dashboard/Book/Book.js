@@ -7,6 +7,7 @@ import { Button, Container, ContainerInline, FlexRow, Available } from "../../..
 import Spinner from "../../../components/Spinner";
 
 import SingleBookImage from "../../../shared/book-img.png"
+import ConfirmDiolog from "../../../components/ConfirmationDialog";
 
 const ContainerInlineAlignLeft = styled(ContainerInline)`
     align-items: flex-start;
@@ -17,6 +18,16 @@ const Book = ({ id, handleBackClick }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [book, setBook] = useState(null);
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
+    const handleDelete = (confirmation) => {
+
+        if(confirmation) {
+           console.log("Delete Confirmed")  
+        }
+        setShowDeleteConfirmation(false);
+
+    }
 
     useEffect(() => {
 
@@ -40,6 +51,7 @@ const Book = ({ id, handleBackClick }) => {
     }, [id]);
 
     return (
+        <>
         <Container>
             <Button onClick={handleBackClick}>
                 <FaAngleLeft />
@@ -78,7 +90,7 @@ const Book = ({ id, handleBackClick }) => {
                         (
                             <>
                             <Button onClick= {()=> console.log("Call me API")}>Lend</Button>
-                            <Button danger onClick= {()=> console.log("Call Delete me API")}>Delete</Button>
+                            <Button color="danger" onClick= {()=> setShowDeleteConfirmation(true) }>Delete</Button>
                            
                             </>
                         )
@@ -98,8 +110,13 @@ const Book = ({ id, handleBackClick }) => {
             }
 
         </Container>
+        <ConfirmDiolog handleClose={handleDelete} 
+        show={showDeleteConfirmation} 
+        headerText={"Delete Confirmation"} 
+        detailText={"Are You Sure you want to delete this record. This action can't be undone."}/>
+        </>
     );
 
 }
 
-export default Book
+export default Book;

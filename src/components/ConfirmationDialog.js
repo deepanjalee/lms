@@ -1,5 +1,5 @@
 import { Button, FlexRow } from "./CommonComponent"
-import { Model, Dialogbox } from "./Model"
+import { Model, DialogBox } from "./Model"
 
 export default function ConfirmDiolog({ handleClose, show, headerText, detailText }) {
 
@@ -7,16 +7,16 @@ export default function ConfirmDiolog({ handleClose, show, headerText, detailTex
     const sendNo = () => handleClose(false);
 
     return (
-        <Model>
-            <Dialogbox>
+        <Model show={show}>
+            <DialogBox>
                 <h2>{headerText}</h2>
-                <h2>{detailText}</h2>
+                <h5>{detailText}</h5>
 
                 <FlexRow>
-                    <Button onClick={sendYes}>Yes</Button>
+                    <Button color="danger" onClick={sendYes}>Yes</Button>
                     <Button onClick={sendNo}>No</Button>
                 </FlexRow>
-            </Dialogbox>
+            </DialogBox>
         </Model>
     );
 
