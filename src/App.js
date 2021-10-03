@@ -30,8 +30,8 @@ function App() {
         <Route exact path={CATELOG} component={Spinner} />
         <Route exact path="/" component={Dashboard} />
         <Route component={NotFound} />
-      
-       
+
+
       </Switch>
     </Suspense>
   const theme = {
@@ -45,10 +45,10 @@ function App() {
 
     },
 
-    danger:{
+    danger: {
       main: "#ff174d",
-      dark:"#d10232",
-      white:"#ffffff",
+      dark: "#d10232",
+      white: "#ffffff",
     },
 
     secondary: {
@@ -90,7 +90,7 @@ function App() {
         </Router>
 
       </Main>
-      <Footer>Copyright { new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
+      <Footer>Copyright {new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
     </ThemeProvider>
 
   );

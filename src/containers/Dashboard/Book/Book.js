@@ -9,7 +9,7 @@ import Spinner from "../../../components/Spinner";
 import SingleBookImage from "../../../shared/book-img.png"
 
 const ContainerInlineAlignLeft = styled(ContainerInline)`
-align-items: flex-start;
+    align-items: flex-start;
 `;
 
 

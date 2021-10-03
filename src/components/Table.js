@@ -5,45 +5,45 @@ import { NoData } from "./NoData";
 
 
 const StyledTable = styled.table`
-margin-top: 2em;
-border-collapse: collapse;
+    margin-top: 2em;
+    border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;
-border: none;
-
-th,td{
     border: none;
-    padding: 1em 3em;
-}
 
-td{
-    padding: 1em 3em;
-}
+    th,td{
+        border: none;
+        padding: 1em 3em;
+    }
 
-tbody tr{
-    :nth-child(even) {
+    td{
+        padding: 1em 3em;
+    }
+
+    tbody tr{
+        :nth-child(even) {
+            background-color: ${props => props.theme.primary.links};
+        }
+
+        &:hover {
+            background-color: ${props => props.theme.primary.move};       
+        }
+    }
+
+    thead{
+        background-color: ${props => props.theme.primary.move};
+    }
+
+    tr  {
+        cursor: pointer;
+    }
+    caption{
         background-color: ${props => props.theme.primary.links};
+        font-size: 1.5em;
+        font-weight: bolder;
+        padding: 1em;
+        color: ${props => props.theme.primary.ash};
     }
-
-    &:hover {
-        background-color: ${props => props.theme.primary.move};       
-    }
-}
-
-thead{
-    background-color: ${props => props.theme.primary.move};
-}
-
-tr  {
-    cursor: pointer;
-}
-caption{
-    background-color: ${props => props.theme.primary.links};
-    font-size: 1.5em;
-    font-weight: bolder;
-    padding: 1em;
-    color: ${props => props.theme.primary.ash};
-}
 `;
 
 

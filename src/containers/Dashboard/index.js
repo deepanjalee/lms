@@ -6,12 +6,10 @@ import Books from "./Book/index";
 
 import { getBooks } from "../../api/bookAPI";
 
-
-
 const Dashboard = () => {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [books,setBooks] = useState([]);
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -32,12 +30,12 @@ const Dashboard = () => {
     }, [])
 
     const contents = [
-        { title: "Books", elements: <Books catelog={books} />},
+        { title: "Books", elements: <Books catelog={books} /> },
         { title: "Members", elements: <h1>Members contenets go hear</h1> },
     ];
 
     return (
-        isLoading ? <Spinner /> : <Tabs contents={contents} /> 
+        isLoading ? <Spinner /> : <Tabs contents={contents} />
     )
 }
 
