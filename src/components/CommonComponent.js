@@ -1,10 +1,10 @@
 import styled from "styled-components";
-
+//
 export const FluidContainer = styled.div`
-display:flex;
-justify-content: 'space-around';
-align-items: center;
-flex-direction: column;
+  display:flex;
+  justify-content: 'space-around';
+  align-items: center;
+  flex-direction: column;
 
 `;
 
@@ -54,5 +54,5 @@ export const Available = styled.h4`
 color:  ${props => props.theme.danger.dark};
 
 `;
-
+// Available component move to the appropriate component
 
