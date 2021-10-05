@@ -60,3 +60,23 @@ export const Available = styled.h4`
 `;
 // Available component move to the appropriate component
 
+export const Select = styled.select`
+    height: 2.5em;
+    width: 100%;
+    background: ${props => props.theme.danger.white};
+    color: ${props => props.theme.primary.ash};
+    padding: 0.5em;
+    font-size: 0.8em;
+    border: 1px solid ${props => props.theme.primary.ash};
+    border-radius: 0.3em;
+    margin-left: 0.5em;
+      option{
+        color: ${props => props.theme.primary.ash};
+        background: ${props => props.theme.danger.white};
+        display:flex;
+        white-space:pre;
+        min-height: 1em;
+        padding: 0px 2px 1px;
+        }
+
+`;

@@ -8,6 +8,7 @@ import Spinner from "../../../components/Spinner";
 
 import SingleBookImage from "../../../shared/book-img.png"
 import ConfirmDiolog from "../../../components/ConfirmationDialog";
+import LendDialog from "./LendDialog";
 
 const ContainerInlineAlignLeft = styled(ContainerInline)`
     align-items: flex-start;
@@ -19,6 +20,7 @@ const Book = ({ id, handleBackClick }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [book, setBook] = useState(null);
     const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const [showLendConfirmation, setShowLendConfirmation] = useState(false);
 
     const handleDelete = (confirmation) => {
 
@@ -26,6 +28,14 @@ const Book = ({ id, handleBackClick }) => {
            console.log("Delete Confirmed")  
         }
         setShowDeleteConfirmation(false);
+
+    }
+    const handleLend = (confirmation,memberId) => {
+
+        if(confirmation) {
+           console.log(memberId)  
+        }
+        setShowLendConfirmation(false,null);
 
     }
 
@@ -89,7 +99,7 @@ const Book = ({ id, handleBackClick }) => {
                         {book.isAvailable ? 
                         (
                             <>
-                            <Button onClick= {()=> console.log("Call me API")}>Lend</Button>
+                            <Button onClick= {()=> setShowLendConfirmation(true)}>Lend</Button>
                             <Button color="danger" onClick= {()=> setShowDeleteConfirmation(true) }>Delete</Button>
                            
                             </>
@@ -114,6 +124,10 @@ const Book = ({ id, handleBackClick }) => {
         show={showDeleteConfirmation} 
         headerText={"Delete Confirmation"} 
         detailText={"Are You Sure you want to delete this record. This action can't be undone."}/>
+
+        <LendDialog 
+        handleConfirm={handleLend}
+        show={showLendConfirmation} />
         </>
     );
 
