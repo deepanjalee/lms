@@ -6,6 +6,9 @@ export const getBooks = () => getRequest(`${BASE_URL}`);
 
 export const getBook = (id) => getRequest(`${BASE_URL}/${id}`);
 
-export const lendBook = (id, borrowedMemberId,borrowedDate) =>
-putRequest(`${BASE_URL}/${id}/borrow`, {borrowedMemberId,borrowedDate});
+export const lendBook = (id, burrowedMemberId,burrowedDate) =>
+putRequest(`${BASE_URL}/${id}/burrow`, {burrowedMemberId,burrowedDate});
+
+export const lendReturn = (id) =>
+putRequest(`${BASE_URL}/${id}/return`);
 
