@@ -17,3 +17,21 @@ export const getRequest = async (uri) => {
 
     }
 }
+
+export const putRequest = async (uri) => {
+    try {
+
+        let response = await axios.put(uri);
+
+        return {
+            data: response.data,
+            error: null,
+        };
+    } catch (error) {
+        return {
+            data: null,
+            error: error,
+        };
+
+    }
+}
