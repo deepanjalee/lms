@@ -1,4 +1,4 @@
-import { getRequest, putRequest, deleteRequest } from "./util"
+import { getRequest, putRequest, deleteRequest, postRequest } from "./util"
 
 const BASE_URL = "/book";
 
@@ -15,4 +15,6 @@ putRequest(`${BASE_URL}/${id}/return`);
 
 export const deleteBook = (id) =>
 deleteRequest(`${BASE_URL}/${id}`);
+
+export const addBookData = (data) => postRequest(`${BASE_URL}`,data);
 

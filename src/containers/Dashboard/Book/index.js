@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { IoAdd } from "react-icons/io5";
 
+import { addBookData } from "../../../api/bookAPI";
+
 
 import Table from "../../../components/Table"
 import { FluidContainer, Container } from "../../../components/CommonComponent";
@@ -27,7 +29,7 @@ const Books = ({ catelog }) => {
     const handleAddBook = (confirmation, data) => {
 
         if (confirmation) {
-           console.log(data);
+            addBookData(data);
         }
         setAddBook(false);
 
