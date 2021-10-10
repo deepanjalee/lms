@@ -1,5 +1,5 @@
 import styled from "styled-components";
-//
+
 export const FluidContainer = styled.div`
   display:flex;
   justify-content: 'space-around';
@@ -9,9 +9,10 @@ export const FluidContainer = styled.div`
 
 export const Container = styled.div`
   display:flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  justify-content:${(props) => props.justifyContent ? props.justifyContent:"center"} ;
+  align-items: ${(props) => props.alignItems ? props.alignItems:"flex-start"};
+  flex-direction: ${(props) => props.flexDirection ? props.flexDirection:"column"};
+  width : ${(props) => props.disableFullWidth ? "initial" : "100%"};
   padding: 1em;
 `;
 

@@ -7,11 +7,14 @@ import Table from "../../../components/Table"
 import { FluidContainer, Container } from "../../../components/CommonComponent";
 import Book from "./Book";
 import { Button } from "../../../components/CommonComponent";
+import AddDialog from "./AddDialog"
 
 
 
 const Books = ({ catelog }) => {
     const [bookId, setSelectedBookId] = useState(null);
+    const [addBook, setAddBook] = useState(null);
+    
 
     const handleTableRowClick = (id) => {
         setSelectedBookId(id);
@@ -21,13 +24,23 @@ const Books = ({ catelog }) => {
         setSelectedBookId(null);
     }
 
+    const handleAddBook = (confirmation, data) => {
+
+        if (confirmation) {
+           console.log(data);
+        }
+        setAddBook(false);
+
+    }
+
+
 
     return (
         
         bookId === null ?
         <>
         <Container>
-        <Button rounded> <IoAdd /> </Button>
+        <Button rounded onClick= {() => setAddBook(true)}> <IoAdd /> </Button>
         </Container>
       
             <FluidContainer>
@@ -35,7 +48,10 @@ const Books = ({ catelog }) => {
                
                 <Table data={catelog} handleRowClick={handleTableRowClick} instruction="Please click the book row for display the more details" />
 
+
             </FluidContainer>
+
+            <AddDialog show={addBook} handleClose={handleAddBook}/>
             </>
             : <Book id={bookId} handleBackClick={handleBackClickView} />
     );
