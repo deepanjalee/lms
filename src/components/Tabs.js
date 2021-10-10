@@ -33,6 +33,7 @@ export const Tab = styled.button`
     border-top-right-radius: 1em;
     &:hover {
     background-color: ${(props) => props.theme.primary.move};
+    
     }
 `;
 export const TabContent = styled.div`
@@ -41,8 +42,8 @@ export const TabContent = styled.div`
     border-bottom-left-radius: 1em;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
-    height: 80vh;
-
+    height: 100%;
+    
 `;
 export const Content = styled.div`
     ${(props) => (props.active ? "" : "display:none")};

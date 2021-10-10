@@ -5,7 +5,7 @@ export const Header = styled.header`
 `;
 
 export const Main = styled.section`
-    height : 95vh;
+    height : 120vh;
     display:flex;
     flex-direction: column;
     align-items: center;

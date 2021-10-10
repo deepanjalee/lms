@@ -7,9 +7,12 @@ import { NoData } from "./NoData";
 const StyledTable = styled.table`
     margin-top: 2em;
     border-collapse: collapse;
-  border-radius: 1em;
-  overflow: hidden;
+    border-radius: 1em;
+    overflow: hidden;
     border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+
 
     th,td{
         border: none;
@@ -49,7 +52,7 @@ const StyledTable = styled.table`
 
 const TableMarkUp = ({ titles, data, handleClick, caption }) => (
     <StyledTable>
-        <caption>{caption}</caption>
+        <caption>{caption ? caption : ""}</caption>
         <colgroup>
             {titles.map((title, index) => (
                 <col key={index} />
@@ -87,7 +90,7 @@ const TableMarkUp = ({ titles, data, handleClick, caption }) => (
 
 const Table = ({ data, handleRowClick, instruction }) =>
 
-    data.length > 0 ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick} caption={instruction} /> : <NoData>
+    data.length > 0 ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick ? handleRowClick : ()=>{} } caption={instruction} /> : <NoData>
         No Data Available
     </NoData>
 
