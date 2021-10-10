@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 
+import { IoAdd } from "react-icons/io5";
+
+
 import Table from "../../../components/Table"
-import { FluidContainer } from "../../../components/CommonComponent";
+import { FluidContainer, Container } from "../../../components/CommonComponent";
 import Book from "./Book";
+import { Button } from "../../../components/CommonComponent";
+
 
 
 const Books = ({ catelog }) => {
@@ -18,11 +23,20 @@ const Books = ({ catelog }) => {
 
 
     return (
+        
         bookId === null ?
+        <>
+        <Container>
+        <Button rounded> <IoAdd /> </Button>
+        </Container>
+      
             <FluidContainer>
+
+               
                 <Table data={catelog} handleRowClick={handleTableRowClick} instruction="Please click the book row for display the more details" />
 
             </FluidContainer>
+            </>
             : <Book id={bookId} handleBackClick={handleBackClickView} />
     );
 }

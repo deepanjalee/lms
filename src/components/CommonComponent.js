@@ -45,14 +45,16 @@ export const Button = styled.button`
     }
   }};
   border:none;
-  border-radius: 50px;
-  padding: 5px 30px;
+  
   cursor:pointer;
   &:hover {
       background-color: ${(props) => props.danger ?  props.theme.danger.dark :  props.theme.primary.main};
       color:  ${(props) => props.danger ?  props.theme.danger.white :  props.theme.primary.activeText};   
     }
     margin-right: 2em;
+
+    ${(props) => props.rounded ? "border-radius: 50%; width: 50px; height:50px; text-align:center;" : "border-radius: 50px; padding: 5px 30px;"}
+
   `;
 
 export const Available = styled.h4`

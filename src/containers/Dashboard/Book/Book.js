@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { FaAngleLeft } from "react-icons/fa";
-import { getBook, lendBook, lendReturn } from "../../../api/bookAPI";
+import { getBook, lendBook, returnBook, deleteBook } from "../../../api/bookAPI";
 import { Button, Container, ContainerInline, FlexRow, Available } from "../../../components/CommonComponent";
 import Spinner from "../../../components/Spinner";
 
@@ -27,7 +27,7 @@ const Book = ({ id, handleBackClick }) => {
     const handleDelete = (confirmation) => {
 
         if (confirmation) {
-            console.log("Delete Confirmed")
+            deleteBook(book.id);
         }
         setShowDeleteConfirmation(false);
 
@@ -43,7 +43,7 @@ const Book = ({ id, handleBackClick }) => {
     const handleReturn = (confirmation) => {
 
         if (confirmation) {
-            lendBook(book.id)
+            returnBook(book.id)
         }
         setShowReturnConfirmation(false);
 
