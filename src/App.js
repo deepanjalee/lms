@@ -14,7 +14,7 @@ import { DASHBOARD, CATELOG } from "./shared/router"
 import Spinner from "./components/Spinner";
 
 const Dashboard = React.lazy(() => {
-  return import('./containers/Dashboard');
+  return import('./containers/Dashboard/index');
 });
 const NotFound = React.lazy(() => {
   return import('./containers/404');
@@ -26,11 +26,13 @@ function App() {
   let routes =
     <Suspense fallback={<Spinner />}>
       <Switch>
-        <Route path={DASHBOARD} component={Dashboard} />
-        <Route path={CATELOG} component={Spinner} />
-        <Route path="/" component={Dashboard} />
+        <Route exact path={DASHBOARD} component={Dashboard} />
+        <Route exact path={CATELOG} component={Spinner} />
+        <Route exact path="/" component={Dashboard} />
         <Route component={NotFound} />
-      </Switch>;
+
+
+      </Switch>
     </Suspense>
   const theme = {
     primary: {
@@ -38,8 +40,15 @@ function App() {
       links: "#21f1fc",
       move: "#29c2ff",
       textColor: "#00324d",
-      activeText: "#0373ad"
+      activeText: "#0373ad",
+      ash: "#787878",
 
+    },
+
+    danger: {
+      main: "#ff174d",
+      dark: "#d10232",
+      white: "#ffffff",
     },
 
     secondary: {
@@ -80,10 +89,8 @@ function App() {
           {routes}
         </Router>
 
-
-
       </Main>
-      <Footer>Copyright { new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
+      <Footer>Copyright {new Date().getFullYear()} &copy; Deepajalee Kathriarachchi</Footer>
     </ThemeProvider>
 
   );
