@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "../../components/Spinner";
 
+import { useSelector, useDispatch } from 'react-redux'
+
+import { setBooks } from '../../store/booksSlice'
+
 import Tabs from "../../components/Tabs";
 import Books from "./Book/index";
 import Members from "./Member/index";
@@ -11,8 +15,11 @@ import { getMembers } from "../../api/memberAPI";
 const Dashboard = () => {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [books, setBooks] = useState([]);
+    
     const [members, setMembers] = useState([]);
+
+    const booksFromRedux = useSelector((state) => state.books.value);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         setIsLoading(true);
@@ -20,7 +27,7 @@ const Dashboard = () => {
             .then((response) => {
                 if (!response.error) {
                     // console.log(response.data);
-                    setBooks(response.data)
+                    dispatch(setBooks(response.data));
                 }
 
             })
@@ -30,7 +37,7 @@ const Dashboard = () => {
             .finally(() => {
                 setIsLoading(false);
             })
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -53,7 +60,7 @@ const Dashboard = () => {
 
 
     const contents = [
-        { title: "Books", elements: <Books catelog={books} /> },
+        { title: "Books", elements: <Books catelog={booksFromRedux} /> },
         { title: "Members", elements: <Members catelog={members} /> },
     ];
 

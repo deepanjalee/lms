@@ -90,7 +90,7 @@ const TableMarkUp = ({ titles, data, handleClick, caption }) => (
 
 const Table = ({ data, handleRowClick, instruction }) =>
 
-    data.length > 0 ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick ? handleRowClick : ()=>{} } caption={instruction} /> : <NoData>
+    data.length > 0  ? <TableMarkUp titles={Object.keys(data[0])} data={data} handleClick={handleRowClick ? handleRowClick : ()=>{} } caption={instruction} /> : <NoData>
         No Data Available
     </NoData>
 
