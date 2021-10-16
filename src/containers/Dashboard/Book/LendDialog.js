@@ -1,89 +1,75 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
 
-import { Button, FlexRow,Select } from "../../../components/CommonComponent"
-import { Model, DialogBox } from "../../../components/Model"
+import { Button, FlexRow, Select } from "../../../components/CommonComponent";
+import { Model, DialogBox } from "../../../components/Model";
 import Spinner from "../../../components/Spinner";
 
 import { getMembers } from "../../../api/memberAPI";
 
-export default function LendDialog({handleConfirm, show}){
-    const [member, setMember] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
-    const [members, setMembers] = useState(null);
+export default function LendDialog({ handleConfirm, show }) {
+  const [member, setMember] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [members, setMembers] = useState(null);
 
+  const setConfirm = () => {
+    if (member !== "") {
+      handleConfirm(true, member);
+    } else {
+      window.alert("Please Select the member");
+    }
+  };
 
-    const setConfirm = () => {
-        if(member !== ""){
-            handleConfirm(true,member);
+  const sendCancel = () => handleConfirm(false, null);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getMembers()
+      .then((response) => {
+        if (!response.error) {
+          setMembers(response.data);
         }
-        else{
-            window.alert("Please Select the member");
-        }
-    };
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
-    const sendCancel = () => handleConfirm(false,null);
-
-    useEffect(() => {
-        setIsLoading(true);
-        getMembers()
-            .then((response) => {
-                if (!response.error) {
-                 console.log(response.data);
-                    setMembers(response.data)
-                }
-
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
-    }, []);
-
-
-    
-
-    return (
-        <Model show={show}>
-            <DialogBox>
-            <h1> Lend Book </h1>
-            <h4>Select Member to Continue and Confirm</h4>
-            <FlexRow>
-            {!isLoading && members !== null ?(
-                <>
-                  <Select
-                  id="member-id"
-                  onChange={(e) => setMember(e.target.value)}
-                  value={member}>
-                      <option value="">--Please Select Member--</option>
-                      {
-                          members.map((member,index)=> (
-                              <option key={index} value={member.id}>{member.firstName}{member.lastName}</option>
-                          ))
-                      }
-  
-                  </Select>
-                  </>
-  
-            ) : (<Spinner />) }
-              
-               
-            </FlexRow>
-            <FlexRow >
-            <Button onClick={setConfirm}>
-                    Confirm
-                </Button>
-                <Button color="danger" onClick={sendCancel} >
-                    Cancel
-                </Button>
-            </FlexRow>
-            </DialogBox>
-            
-
-
-            
-        </Model>
-    );
-
+  return (
+    <Model show={show}>
+      <DialogBox>
+        <h1> Lend Book </h1>
+        <h4>Select Member to Continue and Confirm</h4>
+        <FlexRow>
+          {!isLoading && members !== null ? (
+            <>
+              <Select
+                id="member-id"
+                onChange={(e) => setMember(e.target.value)}
+                value={member}
+              >
+                <option value="">--Please Select Member--</option>
+                {members.map((member, index) => (
+                  <option key={index} value={member.id}>
+                    {member.firstName}
+                    {member.lastName}
+                  </option>
+                ))}
+              </Select>
+            </>
+          ) : (
+            <Spinner />
+          )}
+        </FlexRow>
+        <FlexRow>
+          <Button onClick={setConfirm}>Confirm</Button>
+          <Button color="danger" onClick={sendCancel}>
+            Cancel
+          </Button>
+        </FlexRow>
+      </DialogBox>
+    </Model>
+  );
 }

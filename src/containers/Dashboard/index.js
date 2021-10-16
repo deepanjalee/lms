@@ -9,57 +9,48 @@ import { getBooks } from "../../api/bookAPI";
 import { getMembers } from "../../api/memberAPI";
 
 const Dashboard = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [books, setBooks] = useState([]);
+  const [members, setMembers] = useState([]);
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [books, setBooks] = useState([]);
-    const [members, setMembers] = useState([]);
+  useEffect(() => {
+    setIsLoading(true);
+    getBooks()
+      .then((response) => {
+        if (!response.error) {
+          setBooks(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
-    useEffect(() => {
-        setIsLoading(true);
-        getBooks()
-            .then((response) => {
-                if (!response.error) {
-                    // console.log(response.data);
-                    setBooks(response.data)
-                }
+  useEffect(() => {
+    setIsLoading(true);
+    getMembers()
+      .then((response) => {
+        if (!response.error) {
+          setMembers(response.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
-    }, []);
+  const contents = [
+    { title: "Books", elements: <Books catelog={books} /> },
+    { title: "Members", elements: <Members catelog={members} /> },
+  ];
 
-    useEffect(() => {
-        setIsLoading(true);
-        getMembers()
-            .then((response) => {
-                if (!response.error) {
-                 console.log(response.data);
-                    setMembers(response.data)
-                }
+  return isLoading ? <Spinner /> : <Tabs contents={contents} />;
+};
 
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
-    }, []);
- 
-
-
-    const contents = [
-        { title: "Books", elements: <Books catelog={books} /> },
-        { title: "Members", elements: <Members catelog={members} /> },
-    ];
-
-    return (
-        isLoading ? <Spinner /> : <Tabs contents={contents} />
-    )
-}
-
-export default Dashboard
+export default Dashboard;
