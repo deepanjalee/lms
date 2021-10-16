@@ -49,7 +49,7 @@ const Members = ({ catelog }) => {
             <FluidContainer>
 
                
-                <Table data={catelog}  handleRowClick={handleTableRowClick} instruction="Please click the book row for display the more details" />
+                <Table data={catelog}  handleRowClick={handleTableRowClick} instruction="Please click the Member row for display the more details" />
 
 
             </FluidContainer>
