@@ -11,6 +11,7 @@ export default function LendDialog({handleConfirm, show}){
     const [isLoading, setIsLoading] = useState(false);
     const [members, setMembers] = useState(null);
 
+
     const setConfirm = () => {
         if(member !== ""){
             handleConfirm(true,member);
@@ -24,10 +25,24 @@ export default function LendDialog({handleConfirm, show}){
 
     useEffect(() => {
         setIsLoading(true);
-        const response = getMembers();
-        setMembers(response);
-        setIsLoading(false);
-    },[]);
+        getMembers()
+            .then((response) => {
+                if (!response.error) {
+                 console.log(response.data);
+                    setMembers(response.data)
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
+    }, []);
+
+
+    
 
     return (
         <Model show={show}>
@@ -44,7 +59,7 @@ export default function LendDialog({handleConfirm, show}){
                       <option value="">--Please Select Member--</option>
                       {
                           members.map((member,index)=> (
-                              <option key={index} value={member.id}>{member.name}</option>
+                              <option key={index} value={member.id}>{member.firstName}{member.lastName}</option>
                           ))
                       }
   

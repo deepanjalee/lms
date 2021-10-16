@@ -13,7 +13,7 @@ export const Container = styled.div`
   align-items: ${(props) => props.alignItems ? props.alignItems:"flex-start"};
   flex-direction: ${(props) => props.flexDirection ? props.flexDirection:"column"};
   width : ${(props) => props.disableFullWidth ? "initial" : "100%"};
-  padding: 1em;
+  padding: 0.5em;
 `;
 
 export const ContainerInline = styled.div`

@@ -16,11 +16,11 @@ const StyledTable = styled.table`
 
     th,td{
         border: none;
-        padding: 1em 3em;
+        padding: 1em 1.7em;
     }
 
     td{
-        padding: 1em 3em;
+        padding: 1em 1em;
     }
 
     tbody tr{

@@ -3,7 +3,7 @@ import { Container } from "./CommonComponent";
 
 const Lable  = styled.label`
     font-size: 0.75em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.1em;
     disply: block;
 `;
 
