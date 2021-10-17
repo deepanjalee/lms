@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { useDispatch } from 'react-redux'
+
 import { FaAngleLeft } from "react-icons/fa";
 import {
   getBook,
@@ -21,6 +23,7 @@ import SingleBookImage from "../../../shared/book-img.png";
 import ConfirmDiolog from "../../../components/ConfirmationDialog";
 import LendDialog from "./LendDialog";
 import { getTodayDate } from "../../../shared/utils";
+import { updateBook } from "../../../store/booksSlice";
 
 const ContainerInlineAlignLeft = styled(ContainerInline)`
   align-items: flex-start;
@@ -33,6 +36,8 @@ const Book = ({ id, handleBackClick }) => {
   const [showLendConfirmation, setShowLendConfirmation] = useState(false);
   const [showReturnConfirmation, setShowReturnConfirmation] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleDelete = (confirmation) => {
     if (confirmation) {
       deleteBook(book.id);
@@ -41,13 +46,38 @@ const Book = ({ id, handleBackClick }) => {
   };
   const handleLend = (confirmation, memberId) => {
     if (confirmation) {
-      lendBook(book.id, memberId, getTodayDate());
+      setIsLoading(true);
+      lendBook(book.id, memberId, getTodayDate())
+      .then((response)=>{
+        if(!response.error){
+          console.log(response.data);
+          dispatch(updateBook(response.data));
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
     }
     setShowLendConfirmation(false, null);
   };
   const handleReturn = (confirmation) => {
     if (confirmation) {
-      returnBook(book.id);
+      setIsLoading(true);
+      returnBook(book.id)
+      .then((response) => {
+        if(!response.error){
+          dispatch(updateBook(response.data));
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
     }
     setShowReturnConfirmation(false);
   };
