@@ -6,8 +6,7 @@ export const NavBar = styled.ul`
   padding:0;
   overflow:hidden;
   background-color: ${(props) => props.theme.primary.main};
-  position: fixed,
-
+  position: fixed;
   top:0;
   z-index:1;
   width:100%

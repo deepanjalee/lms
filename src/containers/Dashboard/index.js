@@ -24,7 +24,7 @@ const Dashboard = () => {
     getBooks()
       .then((response) => {
         if (!response.error) {
-          // console.log(response.data);
+         
           dispatch(setBooks(response.data));
         }
       })
@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   const contents = [
     { title: "Books", elements: <Books catelog={booksFromRedux} /> },
-    { title: "Members", elements: <Members catelog={members} /> },
+    { title: "Members", elements: <Members catelog={members} /> }
   ];
 
   return isLoading ? <Spinner /> : <Tabs contents={contents} />;
