@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FaAngleLeft } from "react-icons/fa";
 import {
-  getBook,
   lendBook,
   returnBook,
   deleteBook,
@@ -31,10 +30,14 @@ const ContainerInlineAlignLeft = styled(ContainerInline)`
 
 const Book = ({ id, handleBackClick }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [book, setBook] = useState(null);
+ 
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [showLendConfirmation, setShowLendConfirmation] = useState(false);
   const [showReturnConfirmation, setShowReturnConfirmation] = useState(false);
+
+  
+  const books = useSelector((state) => state.books.value);
+  const book = books.find((element) => element.id === id);
 
   const dispatch = useDispatch();
 
@@ -95,21 +98,7 @@ const Book = ({ id, handleBackClick }) => {
     setShowReturnConfirmation(false);
   };
 
-  useEffect(() => {
-    setIsLoading(true);
-    getBook(id)
-      .then((response) => {
-        if (!response.error) {
-          setBook(response.data);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [id]);
+ 
 
   return (
     <>
