@@ -16,7 +16,7 @@ const Dashboard = () => {
  
   const [members, setMembers] = useState([]);
 
-  const booksFromRedux = useSelector((state) => state.books.value);
+  const books = useSelector((state) => state.books.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Dashboard = () => {
   }, []);
 
   const contents = [
-    { title: "Books", elements: <Books catelog={booksFromRedux} /> },
+    { title: "Books", elements: <Books catelog={books} /> },
     { title: "Members", elements: <Members catelog={members} /> }
   ];
 

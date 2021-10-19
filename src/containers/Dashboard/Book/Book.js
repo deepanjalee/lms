@@ -49,6 +49,8 @@ const Book = ({ id, handleBackClick }) => {
         if(!response.error){
          
           dispatch(deleteBookStore(response.data));
+          handleBackClick();
+
         }
       })
       .catch((error) => {
