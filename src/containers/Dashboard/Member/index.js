@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
-import { addMemberData } from "../../../api/memberAPI";
+import { useDispatch } from 'react-redux'
 
+import { addMemberData } from "../../../api/memberAPI";
+import { addMember as addMemberStore } from "../../../store/membersSlice";
 import { IoAdd } from "react-icons/io5";
 
 import Table from "../../../components/Table";
@@ -10,12 +12,13 @@ import Member from "./Member";
 
 import { Button } from "../../../components/CommonComponent";
 
-import AddDialog from "./AddDialog";
+import AddDialog from "./AddEditDialog";
 
 const Members = ({ catelog }) => {
   const [memberId, setSelectedMemberId] = useState(null);
-
   const [addMember, setAddMember] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleTableRowClick = (id) => {
     setSelectedMemberId(id);
@@ -27,7 +30,16 @@ const Members = ({ catelog }) => {
 
   const handleAddMember = (confirmation, data) => {
     if (confirmation) {
-      addMemberData(data);
+      addMemberData(data)
+      .then((response) => {
+        if(!response.error){
+          dispatch(addMemberStore(response.data));
+        }
+      }
+      )
+      .catch((error) => {
+        console.log(error);
+      });
     }
     setAddMember(false);
   };

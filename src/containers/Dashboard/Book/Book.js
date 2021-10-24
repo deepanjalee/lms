@@ -50,7 +50,6 @@ const Book = ({ id, handleBackClick }) => {
       deleteBook(book.id)
       .then((response) => {
         if(!response.error){
-         
           dispatch(deleteBookStore(response.data));
           handleBackClick();
 
@@ -58,10 +57,7 @@ const Book = ({ id, handleBackClick }) => {
       })
       .catch((error) => {
         console.log(error);
-      })
-      
-        
-      ;
+      });
     }
     setShowDeleteConfirmation(false);
   };

@@ -5,14 +5,14 @@ import { Model, DialogBox } from "../../../components/Model";
 import { Button, Select } from "../../../components/CommonComponent";
 import Input from "../../../components/Input";
 
-export default function AddDialog({ handleClose, show }) {
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [nic, setNic] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
-  const [address, setAddress] = useState("");
-  const [userType, setUserType] = useState("");
+export default function AddDialog({ isEdit ,handleClose, show, data }) {
+  const [firstName, setFirstName] = useState(isEdit && data && data.firstName ? data.firstName : "");
+  const [middleName, setMiddleName] = useState(isEdit && data && data.middleName ? data.middleName : "");
+  const [lastName, setLastName] = useState(isEdit && data && data.lastName ? data.lastName : "");
+  const [nic, setNic] = useState(isEdit && data && data.nic ? data.nic : "");
+  const [contactNumber, setContactNumber] = useState(isEdit && data && data.contactNumber ? data.contactNumber : "");
+  const [address, setAddress] = useState(isEdit && data && data.address ? data.address : "");
+  const [userType, setUserType] = useState(isEdit && data && data.userType ? data.userType : "");
 
   const clearInputs = () => {
     setFirstName("");
@@ -62,31 +62,15 @@ export default function AddDialog({ handleClose, show }) {
   };
 
   const sendCancel = () => {
-    clearInputs();
+    !isEdit && clearInputs();
     handleClose(false, null);
   };
 
-  // id:"2",
-  // firstName:"Nuwan",
-  // middleName:"MAlinka",
-  // lastName:"Silva",
-  // nic:"95339336V",
-  // contactNumber:"0778325432",
-  // address:"Gall",
-  // userType:"University",
-
-  // setFirstName("");
-  // setMiddleName("");
-  // setLastName("");
-  // setNic("");
-  // contactNumber("");
-  // setAddress("");
-  // setUserType("");
-
+ 
   return (
     <Model show={show}>
       <DialogBox>
-        <h1> Add Member </h1>
+        <h1>{isEdit ? "Edit" : "Add"} Member </h1>
         <Container alignItems="center" disableFullWidth>
           <Input
             lable="First name"
@@ -153,7 +137,7 @@ export default function AddDialog({ handleClose, show }) {
             name="address"
             required
             minLength="1"
-            maxLength="10"
+            
           />
 
           <Container>
@@ -173,7 +157,7 @@ export default function AddDialog({ handleClose, show }) {
         </Container>
 
         <FlexRow>
-          <Button onClick={sendDone}>Add Book</Button>
+          <Button onClick={sendDone}>{isEdit ? "Edit" : "Add"} Book</Button>
           <Button onClick={sendCancel} color="danger">
             Cancel
           </Button>
