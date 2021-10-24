@@ -9,7 +9,7 @@ import Table from "../../../components/Table";
 import { FluidContainer, Container } from "../../../components/CommonComponent";
 import Book from "./Book";
 import { Button } from "../../../components/CommonComponent";
-import AddDialog from "./AddDialog";
+import AddDialog from "./AddEditDialog";
 
 const Books = ({ catelog }) => {
   const [bookId, setSelectedBookId] = useState(null);

@@ -5,9 +5,9 @@ import { Model, DialogBox } from "../../../components/Model";
 import { Button } from "../../../components/CommonComponent";
 import Input from "../../../components/Input";
 
-export default function AddDialog({ handleClose, show }) {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+export default function AddDialog({ isEdit =false, handleClose, show, data }) {
+  const [title, setTitle] = useState(isEdit && data && data.title ? data.title : "");
+  const [author, setAuthor] = useState(isEdit && data && data.author ? data.author : "");
 
   const clearInputs = () => {
     setTitle("");
@@ -27,14 +27,14 @@ export default function AddDialog({ handleClose, show }) {
   };
 
   const sendCancel = () => {
-    clearInputs();
+    !isEdit && clearInputs();
     handleClose(false, null);
   };
 
   return (
     <Model show={show}>
       <DialogBox>
-        <h1> Add Book </h1>
+        <h1> {isEdit ? "Edit" : "Add"} Book </h1>
         <Container alignItems="center" disableFullWidth>
           <Input
             lable="Title"
@@ -60,7 +60,7 @@ export default function AddDialog({ handleClose, show }) {
         </Container>
 
         <FlexRow>
-          <Button onClick={sendDone}>Add Book</Button>
+          <Button onClick={sendDone}> {isEdit ? "Edit" : "Add"} Book</Button>
           <Button onClick={sendCancel} color="danger">
             Cancel
           </Button>
